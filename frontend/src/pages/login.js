@@ -10,7 +10,7 @@ import {
   SubmitButton,
 } from "../styled-components/form-components";
 
-const RegisterContent = styled.div`
+const LoginContent = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -20,7 +20,7 @@ const RegisterContent = styled.div`
 const LoginPage = (props) => {
   return (
     <Page>
-      <RegisterContent>
+      <LoginContent>
         <Form height="304px">
           <FieldSet>
             <BasicLabel htmlFor="user" margin="12px">
@@ -47,7 +47,7 @@ const LoginPage = (props) => {
           </FieldSet>
           <SubmitButton width="100%">Register</SubmitButton>
         </Form>
-      </RegisterContent>
+      </LoginContent>
     </Page>
   );
 };

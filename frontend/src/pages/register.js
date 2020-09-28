@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import Page from "../shared/page";
 import styled from "styled-components";
 
+import { register } from "../api/auth";
+
 import {
   Form,
   FieldSet,
@@ -18,24 +20,31 @@ const RegisterContent = styled.div`
 `;
 
 const RegisterPage = (props) => {
-  const userName = useState("");
-  const password = useState("");
+  // TODO Replace useState for text, for form management.
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
 
   const onSubmit = async (e) => {
     e.preventDefault();
 
-    const json = await fetch("http://localhost:8080/auth/register", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        'username': "Mikolertesx",
-        'password': "guapon",
-      })
-    });
-    const response = await json.json();
-    console.log(response);
+    if (password === confirmPassword) {
+      const id = await register(username, password);
+      console.log(id);
+    }
+
+  };
+
+  const onUsernameChange = (usernameInput) => {
+    setUsername(usernameInput.target.value);
+  };
+
+  const onPasswordChange = (passwordInput) => {
+    setPassword(passwordInput.target.value);
+  };
+
+  const onConfirmPasswordChange = (confirmedPassword) => {
+    setConfirmPassword(confirmedPassword.target.value);
   };
 
   return (
@@ -47,6 +56,8 @@ const RegisterPage = (props) => {
               User
             </BasicLabel>
             <BasicInput
+              onChange={onUsernameChange}
+              value={username}
               placeholder="User"
               autoComplete="username"
               margin="12px"
@@ -58,6 +69,8 @@ const RegisterPage = (props) => {
               Password
             </BasicLabel>
             <BasicInput
+              onChange={onPasswordChange}
+              value={password}
               placeholder="Password"
               type="password"
               autoComplete="current-password"
@@ -70,6 +83,8 @@ const RegisterPage = (props) => {
               Confirm password
             </BasicLabel>
             <BasicInput
+              onChange={onConfirmPasswordChange}
+              value={confirmPassword}
               placeholder="Password"
               type="password"
               autoComplete="current-password"

@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import Page from "../shared/page";
 import styled from "styled-components";
+
+import { login } from "../api/auth";
 
 import {
   Form,
@@ -18,20 +20,22 @@ const LoginContent = styled.div`
 `;
 
 const LoginPage = (props) => {
+  // TODO Replace useState for text, for form management.
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
+  const onUsernameChange = (usernameInput) => {
+    setUsername(usernameInput.target.value);
+  };
+
+  const onPasswordChange = (passwordInput) => {
+    setPassword(passwordInput.target.value);
+  };
+
   const onSubmit = async (e) => {
     e.preventDefault();
 
-    const json = await fetch("http://localhost:8080/auth/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        username: "Mikolertesx",
-        password: "guapon",
-      }),
-    });
-    const response = await json.json();
+    const response = await login(username, password);
     console.log(response);
   };
 
@@ -44,6 +48,8 @@ const LoginPage = (props) => {
               User
             </BasicLabel>
             <BasicInput
+              value={username}
+              onChange={onUsernameChange}
               placeholder="User"
               autoComplete="username"
               margin="12px"
@@ -55,6 +61,8 @@ const LoginPage = (props) => {
               Password
             </BasicLabel>
             <BasicInput
+              value={password}
+              onChange={onPasswordChange}
               placeholder="Password"
               type="password"
               autoComplete="current-password"

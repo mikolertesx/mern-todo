@@ -1,4 +1,9 @@
 import React, { useState } from "react";
+import {Redirect} from "react-router-dom";
+
+import { mapDispatchToProps, mapStateToProps } from "../store/reducers/auth";
+import { connect } from "react-redux";
+
 import Page from "../shared/page";
 import styled from "styled-components";
 
@@ -37,10 +42,15 @@ const LoginPage = (props) => {
 
     const response = await login(username, password);
     console.log(response);
+
+    if (response.id) {
+      props.onChangeLogin(true ,response.id);
+    }
+
   };
 
   return (
-    <Page>
+    !props.isLoggedIn ? <Page>
       <LoginContent>
         <Form height="304px">
           <FieldSet>
@@ -75,8 +85,8 @@ const LoginPage = (props) => {
           </SubmitButton>
         </Form>
       </LoginContent>
-    </Page>
+    </Page>:<Redirect to="/todos"/>
   );
 };
 
-export default LoginPage;
+export default connect(mapStateToProps, mapDispatchToProps) (LoginPage);

@@ -1,5 +1,6 @@
 {
   "name": "backend",
+  "proxy": "https://localhost:8080",
   "version": "1.0.0",
   "description": "The backend for the to-do app",
   "main": "index.js",

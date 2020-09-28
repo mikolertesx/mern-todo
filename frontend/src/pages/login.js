@@ -18,6 +18,23 @@ const LoginContent = styled.div`
 `;
 
 const LoginPage = (props) => {
+  const onSubmit = async (e) => {
+    e.preventDefault();
+
+    const json = await fetch("http://localhost:8080/auth/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        username: "Mikolertesx",
+        password: "guapon",
+      }),
+    });
+    const response = await json.json();
+    console.log(response);
+  };
+
   return (
     <Page>
       <LoginContent>
@@ -45,7 +62,9 @@ const LoginPage = (props) => {
               name="password"
             />
           </FieldSet>
-          <SubmitButton width="100%">Register</SubmitButton>
+          <SubmitButton width="100%" onClick={onSubmit}>
+            Login
+          </SubmitButton>
         </Form>
       </LoginContent>
     </Page>

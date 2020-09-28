@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Page from "../shared/page";
 import styled from "styled-components";
 
@@ -18,6 +18,26 @@ const RegisterContent = styled.div`
 `;
 
 const RegisterPage = (props) => {
+  const userName = useState("");
+  const password = useState("");
+
+  const onSubmit = async (e) => {
+    e.preventDefault();
+
+    const json = await fetch("http://localhost:8080/auth/register", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        'username': "Mikolertesx",
+        'password': "guapon",
+      })
+    });
+    const response = await json.json();
+    console.log(response);
+  };
+
   return (
     <Page>
       <RegisterContent>
@@ -57,7 +77,9 @@ const RegisterPage = (props) => {
               name="confirm-password"
             />
           </FieldSet>
-          <SubmitButton width="100%">Register</SubmitButton>
+          <SubmitButton width="100%" onClick={onSubmit}>
+            Register
+          </SubmitButton>
         </Form>
       </RegisterContent>
     </Page>

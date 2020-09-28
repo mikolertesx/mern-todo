@@ -1,13 +1,32 @@
-import React from 'react';
+import React from "react";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Redirect,
+} from "react-router-dom";
+
+// Page-Components.
+import RegisterPage from "./pages/register";
+import LoginPage from "./pages/login";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <h1>
-          React is cool for MERN apps.
-        </h1>
-      </header>
+      <Router>
+        <Switch>
+          <Route path="/login">
+            <LoginPage />
+          </Route>
+          <Route path="/register">
+            <RegisterPage />
+          </Route>
+          <Route path="/" exact={true}>
+            <p>Home</p>
+          </Route>
+          <Redirect to="register" />
+        </Switch>
+      </Router>
     </div>
   );
 }

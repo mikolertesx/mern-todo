@@ -1,7 +1,5 @@
 import axios from "axios";
-// axios.defaults.baseURL = process.env.REACT_APP_URL;
-console.log(process.env);
-const baseUrl = process.env.REACT_APP_URL;
+const baseUrl = 'https://mikolertesx-simple-todos.herokuapp.com';
 
 const register = async (username, password) => {
   const url = `${baseUrl}/auth/register`;

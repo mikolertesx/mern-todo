@@ -18,7 +18,7 @@ function App() {
   return (
     <div className="App">
       <Provider store={authStore}>
-        <Router>
+        <Router basename={process.env.PUBLIC_URL}>
           <Switch>
             <Route path="/login">
               <LoginPage />

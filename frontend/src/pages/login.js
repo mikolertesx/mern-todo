@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import {Redirect} from "react-router-dom";
+import {withRouter} from "react-router-dom";
 
 import { mapDispatchToProps, mapStateToProps } from "../store/reducers/auth";
 import { connect } from "react-redux";
@@ -45,12 +45,12 @@ const LoginPage = (props) => {
 
     if (response.id) {
       props.onChangeLogin(true ,response.id);
+      props.history.push('/todos');
     }
-
   };
 
   return (
-    !props.isLoggedIn ? <Page>
+  <Page>
       <LoginContent>
         <Form height="304px">
           <FieldSet>
@@ -85,8 +85,8 @@ const LoginPage = (props) => {
           </SubmitButton>
         </Form>
       </LoginContent>
-    </Page>:<Redirect to="/todos"/>
+    </Page>
   );
 };
 
-export default connect(mapStateToProps, mapDispatchToProps) (LoginPage);
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(LoginPage));

@@ -1,5 +1,9 @@
 import axios from "axios";
-const baseUrl = 'https://mikolertesx-simple-todos.herokuapp.com';
+const baseUrl = process.env.REACT_APP_SERVER;
+
+if (baseUrl === undefined) {
+  throw new Error('No server was set in the REACT_APP_SERVER env.');
+}
 
 const register = async (username, password) => {
   const url = `${baseUrl}/auth/register`;

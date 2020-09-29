@@ -4,6 +4,7 @@ if (process.env.NODE_ENV !== "production") {
 
 const express = require("express");
 const mongoose = require("mongoose");
+const cors = require("cors");
 const app = express();
 
 const authRoutes = require("./routes/auth");
@@ -13,6 +14,9 @@ const port = process.env.PORT || 3000;
 const mongoPath = process.env.MongoDB;
 const dbPath = process.env.Database;
 const dbFixedPath = `${mongoPath}/${dbPath}`;
+// Enable cors.
+app.use(cors());
+
 // We are using json to communicate.
 app.use(express.json());
 

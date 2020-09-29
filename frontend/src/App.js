@@ -1,6 +1,7 @@
 import React from "react";
 import {
-  BrowserRouter as Router,
+  HashRouter,
+  BrowserRouter,
   Switch,
   Route,
   Redirect,
@@ -15,7 +16,8 @@ import LoginPage from "./pages/login";
 import TodoPage from "./pages/todos";
 
 function App() {
-  console.log(process.env);
+
+  const Router = +process.env.REACT_APP_ASFILE === 1 ? HashRouter:BrowserRouter;
 
   return (
     <div className="App">

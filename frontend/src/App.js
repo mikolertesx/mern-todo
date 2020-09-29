@@ -15,6 +15,8 @@ import LoginPage from "./pages/login";
 import TodoPage from "./pages/todos";
 
 function App() {
+  console.log(process.env);
+
   return (
     <div className="App">
       <Provider store={authStore}>

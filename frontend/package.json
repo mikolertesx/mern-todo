@@ -1,5 +1,10 @@
 {
+  "homepage": "https://mikolertesx.github.io/mern-todo",
   "name": "front-end",
+  "author": {
+    "email": "mgangsal@outlook.com",
+    "name": "Miguel Angel Guerrero Salinas"
+  },
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -35,5 +40,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "gh-pages": "^3.1.0"
   }
 }

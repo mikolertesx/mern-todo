@@ -17,7 +17,7 @@ To manage the state of the App I'm using React-Redux as I really like the way it
 - Next, you deploy the React app to a service that can handle that, and you add an environment variable to it like this: REACT_APP_SERVER="https://www.myserver.com", don't add a slash to the end, as the URL Composer does that for you.
 
 
-- Since, we are using GitHub Pages I had to switch to a hasRouter, however, you can configure this to get cleaner URLS, or to get GitHub Pages compliant urls with: REACT_APP_ASFILE, set it to 1 if you want to use a HashRouter or to anything else if you want to use BrowserRouter.
+- Since, we are using GitHub Pages I had to switch to a hashRouter, however, you can configure this to get cleaner URLS, or to get GitHub Pages compliant urls with: REACT_APP_ASFILE, set it to 1 if you want to use a HashRouter or to anything else if you want to use BrowserRouter.
 
 
 ## Issues

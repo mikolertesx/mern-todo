@@ -12,6 +12,7 @@ import { authStore } from "./store/reducers/auth";
 // Page-Components.
 import RegisterPage from "./pages/register";
 import LoginPage from "./pages/login";
+import TodoPage from "./pages/todos";
 
 function App() {
   return (
@@ -26,7 +27,7 @@ function App() {
               <RegisterPage />
             </Route>
             <Route path="/todos">
-              <p>Todos section</p>
+              <TodoPage />
             </Route>
             <Redirect to="/login" />
           </Switch>

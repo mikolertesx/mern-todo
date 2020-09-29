@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/mern-todo/static/css/main.17b6cb70.chunk.css",
+    "main.js": "/mern-todo/static/js/main.d1cf3064.chunk.js",
+    "main.js.map": "/mern-todo/static/js/main.d1cf3064.chunk.js.map",
+    "runtime-main.js": "/mern-todo/static/js/runtime-main.2ea91912.js",
+    "runtime-main.js.map": "/mern-todo/static/js/runtime-main.2ea91912.js.map",
+    "static/js/2.942d624c.chunk.js": "/mern-todo/static/js/2.942d624c.chunk.js",
+    "static/js/2.942d624c.chunk.js.map": "/mern-todo/static/js/2.942d624c.chunk.js.map",
+    "index.html": "/mern-todo/index.html",
+    "precache-manifest.82ed24995e699f87641ff2fe69cb7c46.js": "/mern-todo/precache-manifest.82ed24995e699f87641ff2fe69cb7c46.js",
+    "service-worker.js": "/mern-todo/service-worker.js",
+    "static/css/main.17b6cb70.chunk.css.map": "/mern-todo/static/css/main.17b6cb70.chunk.css.map",
+    "static/js/2.942d624c.chunk.js.LICENSE.txt": "/mern-todo/static/js/2.942d624c.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.2ea91912.js",
+    "static/js/2.942d624c.chunk.js",
+    "static/css/main.17b6cb70.chunk.css",
+    "static/js/main.d1cf3064.chunk.js"
+  ]
+}

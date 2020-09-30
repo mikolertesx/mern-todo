@@ -4,10 +4,11 @@ if (process.env.NODE_ENV !== "production") {
 
 const express = require("express");
 const mongoose = require("mongoose");
-const cors = require("cors");
 const app = express();
+const cors = require("cors");
 
 const authRoutes = require("./routes/auth");
+const todosRoutes = require("./routes/todos");
 
 const port = process.env.PORT || 3000;
 // Load mongo vars.
@@ -22,6 +23,7 @@ app.use(express.json());
 
 // Use route-middlewares.
 app.use("/auth", authRoutes);
+app.use("/todos", todosRoutes);
 
 // Configure Mongoose
 mongoose
@@ -31,9 +33,15 @@ mongoose
     useFindAndModify: false,
     useCreateIndex: true,
   })
-  .then(() => {
-    app.listen(port, () => {
-      console.log(dbFixedPath);
-      console.log(`App running in localhost at ${port}`);
-    });
-  });
+  .then(
+    (_onFullFill) => {
+      app.listen(port, () => {
+        console.log(dbFixedPath);
+        console.log(`App running in localhost at ${port}`);
+      });
+    },
+    (_onRejected) => {
+      console.log("App rejected DB.");
+      throw new Error('Database connection error, check if it\'s added to your envs or that you have proper access to Mongo.');
+    }
+  );

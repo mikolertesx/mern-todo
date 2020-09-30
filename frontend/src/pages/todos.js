@@ -17,7 +17,7 @@ const TodosPage = (props) => {
     getTodos(props.authToken).then(newTodos => {
       setTodos(newTodos.todos);
     })
-  }, []);
+  }, [props.authToken]);
 
   const onCheckChanged = (event, index) => {
     const newTodos = [...todos];

@@ -2,7 +2,10 @@ import React, { useEffect, useState } from "react";
 import Page from "../shared/page";
 import TodoItem from "../components/todoItem";
 
-import { getTodos } from "../api/todos";
+import { mapDispatchToProps, mapStateToProps } from "../store/reducers/auth";
+import { connect } from "react-redux";
+
+import { getTodos, updateTodo, removeTodo } from "../api/todos";
 
 import FloatingButton from "../components/floatingButton";
 
@@ -11,25 +14,48 @@ const TodosPage = (props) => {
   ]);
 
   useEffect(() => {
+    getTodos(props.authToken).then(newTodos => {
+      setTodos(newTodos.todos);
+    })
   }, []);
 
   const onCheckChanged = (event, index) => {
     const newTodos = [...todos];
-    newTodos[index].checked = event.target.checked;
+    const filteredTodo = newTodos.filter(todo => todo.id === index)[0];
+    filteredTodo.checked = event.target.checked;
+    updateTodo(props.authToken, index, {
+      checked: filteredTodo.checked,
+      text: filteredTodo.text,
+    })
     setTodos(newTodos);
   };
 
   const onDelete = (index) => {
-    const newTodos = todos.filter((_value, i) => (i === index ? false : true));
+    const todoIndex = todos.findIndex(todo => todo.id === index);
+    const newTodos = todos.filter((_, index) => index !== todoIndex);
+
+    removeTodo(props.authToken, todos[todoIndex].id);
     setTodos(newTodos);
   };
 
   const onTextChange = (event, index) => {
     const newText = event.target.value;
     const newTodos = [...todos];
-    newTodos[index].value = newText;
+    const todoIndex = todos.findIndex(todo => todo.id === index);
+    newTodos[todoIndex].text = newText;
     setTodos(newTodos);
   };
+
+  const onTextUpdate = (event, index) => {
+    const newTodos = [...todos];
+    const filteredTodo = newTodos.filter(todo => todo.id === index)[0];
+    filteredTodo.text = event.target.value;
+    updateTodo(props.authToken, index, {
+      checked: filteredTodo.checked,
+      text: filteredTodo.text,
+    })
+    setTodos(newTodos);
+  }
 
   const createToDo = (text, checked) => {
     const toDo = {
@@ -50,6 +76,7 @@ const TodosPage = (props) => {
         checked={checked}
         onCheckedChange={(event) => onCheckChanged(event, index)}
         onTextChange={(event) => onTextChange(event, index)}
+        onTextUpdate={(event) => onTextUpdate(event, index)}
         onDelete={() => onDelete(index)}
       />
     );
@@ -62,7 +89,7 @@ const TodosPage = (props) => {
         onClick={() => createToDo("New Reminder", false)}
       />
       {todos.length !== 0 ? (
-        todos.map((item, index) => renderToDo(index, item.text, item.checked))
+        todos.map((item) => renderToDo(item.id, item.text, item.checked))
       ) : (
         <p>Add some todos</p>
       )}
@@ -70,4 +97,5 @@ const TodosPage = (props) => {
   );
 };
 
-export default TodosPage;
+// export default TodosPage;
+export default connect(mapStateToProps, mapDispatchToProps)(TodosPage);

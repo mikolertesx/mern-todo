@@ -11,7 +11,7 @@ To manage the state of the App I'm using React-Redux as I really like the way it
 - Set up a free MongoDB account, as this specific project relies on it.
 
 
-- Deploy the backend to a server like Heroku, and there, set the the variables MongoDB and Database to the specific ones you're using in your build, format is MongoDB="mongodb://urlWithoutDBName" and the Database name like this Database="ToDo".
+- Deploy the backend to a server like Heroku, and there, set the the variables MongoDB and Database to the specific ones you're using in your build, format is MongoDB="mongodb://urlWithoutDBName" and the Database name like this Database="ToDo", at the end add a SECRET, that will be the key that we will use to build the JWT Tokens.
 
 
 - Next, you deploy the React app to a service that can handle that, and you add an environment variable to it like this: REACT_APP_SERVER="https://www.myserver.com", don't add a slash to the end, as the URL Composer does that for you.

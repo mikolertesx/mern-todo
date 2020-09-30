@@ -51,6 +51,7 @@ const TodoItem = (props) => {
             onChange={props.onTextChange}
             onKeyDown={(event) => {
               if (event.key === "Enter") {
+                props.onTextUpdate(event);
                 switchModes();
               }
             }}
@@ -58,7 +59,6 @@ const TodoItem = (props) => {
         )}
         <input
           type="checkbox"
-          onClick={switchModes}
           checked={props.checked}
           onChange={props.onCheckedChange}
         />

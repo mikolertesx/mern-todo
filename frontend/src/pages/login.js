@@ -42,8 +42,8 @@ const LoginPage = (props) => {
 
     const response = await login(username, password);
 
-    if (response.id) {
-      props.onChangeLogin(true ,response.id);
+    if (response.token) {
+      props.onChangeLogin(true ,response.token);
       props.history.push('/todos');
     }
   };

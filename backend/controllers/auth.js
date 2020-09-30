@@ -1,4 +1,5 @@
 const User = require("../models/User");
+const authToken = require("../utils/auth");
 
 const authRegister = async (req, res) => {
   const request = req.body;
@@ -7,10 +8,11 @@ const authRegister = async (req, res) => {
     username,
     password,
   });
-
+  
   if (newUser) {
+    const tokenId = authToken.createToken(newUser.id);
     return res.send({
-      id: newUser.id,
+      token: tokenId,
     });
   }
 
@@ -21,15 +23,14 @@ const authRegister = async (req, res) => {
 
 const authLogin = async (req, res) => {
   const request = req.body;
-  console.log(req.body);
   const { username, password } = request;
   const user = await User.findOne({ username });
   if (user) {
-    console.log(user.password, password);
     if (user.password === password) {
+      const tokenId = authToken.createToken(user.id);
       return res.send({
         message: "Logged in.",
-        id: user.id,
+        token: tokenId,
       });
     } else {
       return res.send({

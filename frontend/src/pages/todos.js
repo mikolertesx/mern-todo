@@ -1,20 +1,17 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Page from "../shared/page";
 import TodoItem from "../components/todoItem";
+
+import { getTodos } from "../api/todos";
 
 import FloatingButton from "../components/floatingButton";
 
 const TodosPage = (props) => {
   const [todos, setTodos] = useState([
-    {
-      value: "Something cool",
-      checked: true,
-    },
-    {
-      value: "Something even cooler",
-      checked: false,
-    },
   ]);
+
+  useEffect(() => {
+  }, []);
 
   const onCheckChanged = (event, index) => {
     const newTodos = [...todos];
@@ -32,13 +29,13 @@ const TodosPage = (props) => {
     const newTodos = [...todos];
     newTodos[index].value = newText;
     setTodos(newTodos);
-  }
+  };
 
   const createToDo = (text, checked) => {
     const toDo = {
       value: text,
       checked: checked,
-    }
+    };
 
     const newTodos = [...todos];
     newTodos.push(toDo);
@@ -60,8 +57,15 @@ const TodosPage = (props) => {
 
   return (
     <Page>
-      <FloatingButton text="+" onClick={() => createToDo('New Reminder', false)}/>
-      {todos.map((item, index) => renderToDo(index, item.value, item.checked))}
+      <FloatingButton
+        text="+"
+        onClick={() => createToDo("New Reminder", false)}
+      />
+      {todos.length !== 0 ? (
+        todos.map((item, index) => renderToDo(index, item.text, item.checked))
+      ) : (
+        <p>Add some todos</p>
+      )}
     </Page>
   );
 };

@@ -41,7 +41,6 @@ const LoginPage = (props) => {
     e.preventDefault();
 
     const response = await login(username, password);
-    console.log(response);
 
     if (response.id) {
       props.onChangeLogin(true ,response.id);

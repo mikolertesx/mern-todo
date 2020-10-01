@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/mern-todo/static/css/main.17b6cb70.chunk.css",
-    "main.js": "/mern-todo/static/js/main.abb2a107.chunk.js",
-    "main.js.map": "/mern-todo/static/js/main.abb2a107.chunk.js.map",
+    "main.js": "/mern-todo/static/js/main.8297bb66.chunk.js",
+    "main.js.map": "/mern-todo/static/js/main.8297bb66.chunk.js.map",
     "runtime-main.js": "/mern-todo/static/js/runtime-main.2ea91912.js",
     "runtime-main.js.map": "/mern-todo/static/js/runtime-main.2ea91912.js.map",
-    "static/js/2.712b5e4e.chunk.js": "/mern-todo/static/js/2.712b5e4e.chunk.js",
-    "static/js/2.712b5e4e.chunk.js.map": "/mern-todo/static/js/2.712b5e4e.chunk.js.map",
+    "static/js/2.34490f9a.chunk.js": "/mern-todo/static/js/2.34490f9a.chunk.js",
+    "static/js/2.34490f9a.chunk.js.map": "/mern-todo/static/js/2.34490f9a.chunk.js.map",
     "index.html": "/mern-todo/index.html",
-    "precache-manifest.763295f6cfa8655e376c4227ad3fe45d.js": "/mern-todo/precache-manifest.763295f6cfa8655e376c4227ad3fe45d.js",
+    "precache-manifest.1eb5b459013dfb0f65b75e55fe93be9c.js": "/mern-todo/precache-manifest.1eb5b459013dfb0f65b75e55fe93be9c.js",
     "service-worker.js": "/mern-todo/service-worker.js",
     "static/css/main.17b6cb70.chunk.css.map": "/mern-todo/static/css/main.17b6cb70.chunk.css.map",
-    "static/js/2.712b5e4e.chunk.js.LICENSE.txt": "/mern-todo/static/js/2.712b5e4e.chunk.js.LICENSE.txt"
+    "static/js/2.34490f9a.chunk.js.LICENSE.txt": "/mern-todo/static/js/2.34490f9a.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.2ea91912.js",
-    "static/js/2.712b5e4e.chunk.js",
+    "static/js/2.34490f9a.chunk.js",
     "static/css/main.17b6cb70.chunk.css",
-    "static/js/main.abb2a107.chunk.js"
+    "static/js/main.8297bb66.chunk.js"
   ]
 }

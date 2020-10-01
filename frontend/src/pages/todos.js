@@ -1,13 +1,22 @@
 import React, { useEffect, useState } from "react";
-import Page from "../shared/page";
-import TodoItem from "../components/todoItem";
-
+import styled from "styled-components";
 import { mapDispatchToProps, mapStateToProps } from "../store/reducers/auth";
 import { connect } from "react-redux";
 
-import { getTodos, updateTodo, removeTodo, addTodo } from "../api/todos";
 
+import Page from "../shared/page";
+import TodoItem from "../components/todoItem";
+
+import { getTodos, updateTodo, removeTodo, addTodo } from "../api/todos";
 import FloatingButton from "../components/floatingButton";
+
+const EmptyDiv = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 
 const TodosPage = (props) => {
   const [todos, setTodos] = useState([
@@ -94,7 +103,9 @@ const TodosPage = (props) => {
       {todos.length !== 0 ? (
         todos.map((item) => renderToDo(item.id, item.text, item.checked))
       ) : (
-        <p>Add some todos</p>
+        <EmptyDiv>
+          <p>Add some todos</p>
+        </EmptyDiv>
       )}
     </Page>
   );

@@ -32,6 +32,11 @@ const TodoDelete = styled.button`
   }
 `;
 
+const TodoInput = styled.input`
+  width: 80%;
+  padding: 12px;
+`;
+
 const TodoItem = (props) => {
   const [editMode, setEditMode] = useState(false);
 
@@ -45,7 +50,7 @@ const TodoItem = (props) => {
         {!editMode ? (
           <TodoP onClick={switchModes}>{props.text}</TodoP>
         ) : (
-          <input
+          <TodoInput
             type="text"
             value={props.text}
             onChange={props.onTextChange}

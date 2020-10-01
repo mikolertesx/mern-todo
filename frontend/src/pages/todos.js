@@ -5,7 +5,7 @@ import TodoItem from "../components/todoItem";
 import { mapDispatchToProps, mapStateToProps } from "../store/reducers/auth";
 import { connect } from "react-redux";
 
-import { getTodos, updateTodo, removeTodo } from "../api/todos";
+import { getTodos, updateTodo, removeTodo, addTodo } from "../api/todos";
 
 import FloatingButton from "../components/floatingButton";
 
@@ -55,16 +55,19 @@ const TodosPage = (props) => {
       text: filteredTodo.text,
     })
     setTodos(newTodos);
-  }
+  };
 
-  const createToDo = (text, checked) => {
-    const toDo = {
-      value: text,
-      checked: checked,
-    };
+  const createToDo = async (text, checked) => {
+    const todo = await addTodo(props.authToken, text);
+    
+    const todoMap = {
+      id: todo.id,
+      text: text,
+      checked: checked
+    }
 
     const newTodos = [...todos];
-    newTodos.push(toDo);
+    newTodos.push(todoMap);
     setTodos(newTodos);
   };
 

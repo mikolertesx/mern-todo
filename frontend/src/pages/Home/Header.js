@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Button from "../../shared/paddedButton";
 
@@ -51,8 +52,12 @@ const Header = () => {
           across devices!!!
         </CardDescription>
         <ButtonsDiv>
-          <HeaderButton>Register yourself</HeaderButton>
-          <HeaderButton type="secondary">Login with your account</HeaderButton>
+          <Link to="/register">
+            <HeaderButton>Register yourself</HeaderButton>
+          </Link>
+          <Link to="/login">
+            <HeaderButton type="secondary">Login with your account</HeaderButton>
+          </Link>
         </ButtonsDiv>
       </Card>
     </Content>

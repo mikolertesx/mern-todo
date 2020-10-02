@@ -6,7 +6,6 @@ import LoginIcon from "../../static/svg/login.svg"
 import ManageIcon from "../../static/svg/manage.svg"
 
 const Content = styled.div`
-  background: rgba(0, 0, 0, 0.1);
   margin-top: 12px;
   padding-top: 64px;
   padding-bottom: 64px;
@@ -56,7 +55,6 @@ const FeatureTitle = styled.h2`
     font-size: 1.2rem;
     text-align: center;
 `;
-
 
 const FeatureIcon = styled.img`
   display: block;

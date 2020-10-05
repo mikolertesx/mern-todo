@@ -62,18 +62,21 @@ const RegisterPage = () => {
             title="Username"
             text={username}
             onChange={(e) => onChange(e, setUsername)}
+            autoComplete="off"
           />
           <InputField
             title="Password"
             text={password}
             onChange={(e) => onChange(e, setPassword)}
             type="password"
+            autoComplete="off"
           />
           <InputField
             title="Confirm password"
             text={confirmPassword}
             onChange={(e) => onChange(e, setConfirmPassword)}
             type="password"
+            autoComplete="off"
           />
           {error && <ErrorP>{error}</ErrorP>}
           <FormButtonContainer>

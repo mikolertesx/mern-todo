@@ -2,6 +2,11 @@ import styled from "styled-components";
 import Theme from "../../shared/Theme";
 import InputField from "../../components/InputField";
 import paddedButton from "../../shared/paddedButton";
+import {
+  LoadingBanner,
+  LoadingBannerTitle,
+  ErrorP,
+} from "../../shared/LoadingBanner";
 
 export const Content = styled.div`
   display: flex;
@@ -48,33 +53,4 @@ export const FormButtonContainer = styled.div`
   height: 64px;
 `;
 
-export const ErrorP = styled.p`
-  color: red;
-  font-family: 'Arial';
-  font-size: 1.2rem;
-  text-align: center;
-  font-weight: bold;
-  margin-bottom: 12px;
-`;
-
-export const LoadingBanner = styled.div`
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.4);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
-
-export const LoadingBannerTitle = styled.h1`
-  font-size: 2.5rem;
-  font-family: 'Arial';
-  font-weight: thin;
-  color: white;
-`;
-
-export { InputField };
+export { InputField, LoadingBanner, LoadingBannerTitle, ErrorP };

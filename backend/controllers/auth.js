@@ -4,6 +4,13 @@ const authToken = require("../utils/auth");
 const authRegister = async (req, res) => {
   const request = req.body;
   const { username, password } = request;
+  const previousUser = await User.findOne({'username': username});
+  if (previousUser) {
+    return res.send({
+      message: "This user already exists."
+    });
+  }
+
   const newUser = await User.create({
     username,
     password,
@@ -17,7 +24,7 @@ const authRegister = async (req, res) => {
   }
 
   return res.send({
-    message: "Error",
+    message: "Something went wrong, you should try later.",
   });
 };
 

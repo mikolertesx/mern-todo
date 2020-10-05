@@ -1,8 +1,15 @@
 import React from "react";
-import { HashRouter, BrowserRouter, Route } from "react-router-dom";
+import {
+  HashRouter,
+  BrowserRouter,
+  Route,
+  Redirect,
+  Switch,
+} from "react-router-dom";
 
 import HomePage from "./pages/Home/";
 import LoginPage from "./pages/Login/";
+import RegisterPage from "./pages/Register/";
 
 function App() {
   const Router =
@@ -11,12 +18,18 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <Route exact={true} path="/">
-          <HomePage />
-        </Route>
-        <Route exact={true} path="/login">
-          <LoginPage />
-        </Route>
+        <Switch>
+          <Route exact={true} path="/">
+            <HomePage />
+          </Route>
+          <Route exact={true} path="/login">
+            <LoginPage />
+          </Route>
+          <Route exact={true} path="/register">
+            <RegisterPage />
+          </Route>
+          <Redirect to="/" />
+        </Switch>
       </Router>
     </div>
   );

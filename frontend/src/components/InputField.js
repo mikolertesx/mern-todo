@@ -20,13 +20,14 @@ const Input = styled.input`
   width: 100%;
 `;
 
-const InputField = ({ title, text, onChange }) => {
+const InputField = ({ title, text, onChange, type }) => {
   const fixedTitle = title || text;
+  const fixedType = type || 'text';
 
   return (
     <InputContainer>
       <Label>{fixedTitle}</Label>
-      <Input value={text} onChange={onChange} />
+      <Input value={text} onChange={onChange} type={fixedType} />
     </InputContainer>
   );
 };

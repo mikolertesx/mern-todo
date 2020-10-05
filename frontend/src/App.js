@@ -7,7 +7,7 @@ import {
   Switch,
 } from "react-router-dom";
 
-import { HomePage, LoginPage, RegisterPage } from "./pages";
+import { HomePage, LoginPage, RegisterPage, TodoPage } from "./pages";
 
 function App() {
   const Router =
@@ -25,6 +25,9 @@ function App() {
           </Route>
           <Route exact={true} path="/register">
             <RegisterPage />
+          </Route>
+          <Route exact={false} path="/todo">
+            <TodoPage />
           </Route>
           <Redirect to="/" />
         </Switch>

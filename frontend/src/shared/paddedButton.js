@@ -10,6 +10,10 @@ const styles = {
     background: Theme.secondaryColor,
     color: "white",
   },
+  danger: {
+    background: Theme.dangerColor,
+    color: "white",
+  }
 };
 
 const paddedButton = styled.button`
@@ -21,6 +25,7 @@ const paddedButton = styled.button`
   border: 1px solid transparent;
   cursor: pointer;
   transition: all 0.3s;
+  outline: none;
 
   &:hover {
     border: 1px solid ${(props) => styles[props.type].background};

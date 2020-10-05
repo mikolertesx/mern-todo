@@ -43,7 +43,9 @@ export const FormContainer = styled.div`
   padding: 24px;
 `;
 
-export const FormButton = styled(paddedButton)``;
+export const FormButton = styled(paddedButton)`
+  margin: 0 24px;
+`;
 
 export const FormButtonContainer = styled.div`
   display: flex;

@@ -14,7 +14,7 @@ import {
 } from "./components";
 import { register } from "../../api/auth";
 
-const RegisterPage = () => {
+const RegisterPage = (props) => {
   const [isLoading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [username, setUsername] = useState("");
@@ -46,7 +46,14 @@ const RegisterPage = () => {
     if (!registerResult.token) {
       setError(registerResult.message || 'Server didn\'t answer.');
     }
+
+    props.onChangeLogin(registerResult.token);
   };
+
+  const onRedirect = (event) => {
+    event.preventDefault();
+    props.history.push('/login');
+  }
 
   return (
     <Content>
@@ -81,6 +88,7 @@ const RegisterPage = () => {
           {error && <ErrorP>{error}</ErrorP>}
           <FormButtonContainer>
             <FormButton>Register</FormButton>
+            <FormButton type="secondary" onClick={onRedirect}>Or Login</FormButton>
           </FormButtonContainer>
         </FormContainer>
       </Form>

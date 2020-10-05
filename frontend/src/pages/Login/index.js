@@ -10,18 +10,19 @@ import {
   ButtonSeparation,
   ErrorP,
   LoadingBanner,
-  LoadingBannerTitle
+  LoadingBannerTitle,
 } from "./components";
 import { login } from "../../api/auth";
 
-const LoginPage = () => {
-  const [loading, setLoading] = useState(true);
+const LoginPage = (props) => {
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
   const onSubmit = async (event) => {
     event.preventDefault();
+    setError("");
     if (!username) {
       return setError("No username was provided.");
     }
@@ -32,15 +33,23 @@ const LoginPage = () => {
     const LoginResult = await login(username, password);
     setLoading(false);
     if (!LoginResult.token) {
-      return setError(LoginResult.message || 'Server didn\'t reply');
+      return setError(LoginResult.message || "Server didn't reply");
     }
+    props.onChangeLogin(LoginResult.token);
+  };
+
+  const onRedirect = (event) => {
+    event.preventDefault();
+    props.history.push('/register');
   }
 
   return (
     <Content>
-      {loading && <LoadingBanner>
+      {loading && (
+        <LoadingBanner>
           <LoadingBannerTitle>Loading...</LoadingBannerTitle>
-        </LoadingBanner>}
+        </LoadingBanner>
+      )}
       <Form onSubmit={onSubmit}>
         <TitleInForm>
           <TitleH1InForm>Access your account</TitleH1InForm>
@@ -59,11 +68,11 @@ const LoginPage = () => {
             type="password"
             autoComplete="current-password"
           />
-        <ErrorP>{error}</ErrorP>
+          <ErrorP>{error}</ErrorP>
         </FormDiv>
         <ButtonSeparation>
           <FormButtons type="primary">Login</FormButtons>
-          <FormButtons type="secondary">Or register</FormButtons>
+          <FormButtons type="secondary" onClick={onRedirect}>Or register</FormButtons>
         </ButtonSeparation>
       </Form>
     </Content>

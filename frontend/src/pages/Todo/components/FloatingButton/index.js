@@ -23,9 +23,9 @@ const Button = styled.button`
   }
 `;
 
-const FloatingButton = () => {
+const FloatingButton = ({onClick}) => {
   return (
-    <Button>
+    <Button onClick={onClick}>
       +
     </Button>
   );

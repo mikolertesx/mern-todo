@@ -1,4 +1,7 @@
 import React from "react";
+import { Provider } from "react-redux";
+import Store from "./redux/store";
+
 import {
   HashRouter,
   BrowserRouter,
@@ -7,7 +10,12 @@ import {
   Switch,
 } from "react-router-dom";
 
-import { HomePage, LoginPage, RegisterPage, TodoPage } from "./pages";
+import {
+  HomePage,
+  connectedLoginPage as LoginPage,
+  connectedRegisterPage as RegisterPage,
+  connectedToDoPage as TodoPage,
+} from "./pages";
 
 function App() {
   const Router =
@@ -15,23 +23,25 @@ function App() {
 
   return (
     <div className="App">
-      <Router>
-        <Switch>
-          <Route exact={true} path="/">
-            <HomePage />
-          </Route>
-          <Route exact={true} path="/login">
-            <LoginPage />
-          </Route>
-          <Route exact={true} path="/register">
-            <RegisterPage />
-          </Route>
-          <Route exact={false} path="/todo">
-            <TodoPage />
-          </Route>
-          <Redirect to="/" />
-        </Switch>
-      </Router>
+      <Provider store={Store}>
+        <Router>
+          <Switch>
+            <Route exact={true} path="/">
+              <HomePage />
+            </Route>
+            <Route exact={true} path="/login">
+              <LoginPage />
+            </Route>
+            <Route exact={true} path="/register">
+              <RegisterPage />
+            </Route>
+            <Route exact={false} path="/todos">
+              <TodoPage />
+            </Route>
+            <Redirect to="/" />
+          </Switch>
+        </Router>
+      </Provider>
     </div>
   );
 }

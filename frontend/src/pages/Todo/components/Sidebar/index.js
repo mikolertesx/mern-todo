@@ -9,7 +9,7 @@ import {
 } from "./components";
 import ProfileIcon from "../../../../static/images/user.png";
 
-export const SideBar = () => {
+export const SideBar = (props) => {
   return (
     <Content>
       <ProfileInfo>
@@ -18,7 +18,7 @@ export const SideBar = () => {
         </ProfileDiv>
         <ProfileName>Name of user</ProfileName>
       </ProfileInfo>
-      <LeaveButton type="danger">Log out</LeaveButton>
+      <LeaveButton onClick={props.onClick} type="danger">Log out</LeaveButton>
     </Content>
   );
 };

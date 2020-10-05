@@ -42,7 +42,7 @@ const singleToDo = ({ text, checked }) => {
   return (
     <Content>
       <CheckAndTextDiv>
-        <CheckBox type="checkbox" value={checked} />
+        <CheckBox type="checkbox" checked={checked} />
         <Text>{text}</Text>
       </CheckAndTextDiv>
       <DeleteDiv>

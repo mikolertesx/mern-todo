@@ -7,9 +7,7 @@ import {
   Switch,
 } from "react-router-dom";
 
-import HomePage from "./pages/Home/";
-import LoginPage from "./pages/Login/";
-import RegisterPage from "./pages/Register/";
+import { HomePage, LoginPage, RegisterPage } from "./pages";
 
 function App() {
   const Router =

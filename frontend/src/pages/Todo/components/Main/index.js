@@ -5,7 +5,7 @@ import SingleToDo from "./singleToDo";
 const MainContent = ({ toDos }) => {
   return (
     <Content>
-      {toDos ? (
+      {toDos !== null && toDos.length ? (
         toDos.map((todo) => (
           <SingleToDo text={todo.text} checked={todo.checked} key={todo.id} />
         ))

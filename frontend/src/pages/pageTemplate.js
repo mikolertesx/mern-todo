@@ -5,22 +5,28 @@ import { connect } from "react-redux";
 
 // Page that will always redirect to ToDos.
 const NoAuthPage = (props) => {
+  const onFailUrl = props.onFailUrl;
   const childLessProps = { ...props };
-  delete childLessProps["children"];
 
-  if (props.isLoggedIn) {
-    return <Redirect to="/todos" />;
+  delete childLessProps["children"];
+  delete childLessProps["onFailUrl"];
+
+  if (props.isLoggedIn === true) {
+    return <Redirect to={onFailUrl} />;
   }
   return <>{React.cloneElement(props.children, childLessProps)}</>;
 };
 
 // Page that will always need auth.
 const AuthPage = (props) => {
+  const onFailUrl = props.onFailUrl;
   const childLessProps = { ...props };
-  delete childLessProps["children"];
 
-  if (!props.isLoggedIn) {
-    return <Redirect to="/login" />;
+  delete childLessProps["children"];
+  delete childLessProps["onFailUrl"];
+
+  if (props.isLoggedIn === false) {
+    return <Redirect to={onFailUrl} />;
   }
   return <>{React.cloneElement(props.children, childLessProps)}</>;
 };

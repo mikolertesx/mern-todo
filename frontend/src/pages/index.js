@@ -8,19 +8,19 @@ import TodoPage from "./Todo";
 export { default as HomePage } from "./Home";
 
 export const connectedLoginPage = () => (
-  <ConnectedPage>
-    <LoginPage />
+  <ConnectedPage onFailUrl="/todos">
+    <LoginPage/>
   </ConnectedPage>
 );
 
 export const connectedRegisterPage = () => (
-  <ConnectedPage>
+  <ConnectedPage onFailUrl="/todos">
     <RegisterPage />
   </ConnectedPage>
 );
 
 export const connectedToDoPage = () => (
-  <AuthedPage>
+  <AuthedPage onFailUrl="/login">
     <TodoPage />
   </AuthedPage>
 );

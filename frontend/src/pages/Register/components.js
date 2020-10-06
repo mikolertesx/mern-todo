@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import Theme from "../../shared/Theme";
 import InputField from "../../components/InputField";
+import Background from "../../static/images/beach.jpg";
 import paddedButton from "../../shared/paddedButton";
 import {
   LoadingBanner,
@@ -10,6 +11,8 @@ import {
 
 export const Content = styled.div`
   display: flex;
+  background: url(${Background});
+  background-size: cover;
   flex-direction: column;
   width: 100%;
   height: 100vh;

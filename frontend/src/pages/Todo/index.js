@@ -19,7 +19,7 @@ export const TodoPage = (props) => {
       setTodos(newTodos);
     }
     updateTodos();
-  }, [ToDos, props.token]);
+  }, [props.token]);
 
 
   return (

@@ -31,8 +31,9 @@ export const TitleInForm = styled.div`
 `;
 
 export const TitleH1InForm = styled.h1`
-  font-family: "Arial";
-  font-weight: 200;
+  font-size: 1.5rem;
+  font-family: Arial;
+  text-align: center;
 `;
 
 export const Form = styled.form`

@@ -8,7 +8,9 @@ As part of the learning experience I decided to add the most popular way to add 
 
 To manage the state of the App I'm using React-Redux as I really like the way it works with the project, although it could be easily replaced with the context api in React.
 
-## How to use
+**Note**: due to the scope of the project, no Icon was added, but a change of a Icon is pretty simple to do. *wink*
+
+## How to deploy
 - Set up a free MongoDB account, as this specific project relies on it.
 
 - Deploy the backend to a server like Heroku, and there, set the the variables MongoDB and Database to the specific ones you're using in your build, format is MongoDB="mongodb://urlWithoutDBName" and the Database name like this Database="ToDo", at the end add a SECRET, like ths SECRET="Your-Auth-Key" that will be the key that we will use to build the JWT Tokens.
@@ -58,3 +60,6 @@ Another issue that was annoying is that since GitHub serves only a static file, 
 - To avoid having to reduce the reusability of the components, you can use HOCs to provide the values that you are expecting to get.
 
 - If React Redux was implemented differently, I could just add code for deletion inside each of the elements or the elements that maps it on a list.
+
+## Demo
+[Client](https://mikolertesx.github.io/mern-todo/#/), [Server](https://mikolertesx-simple-todos.herokuapp.com/)

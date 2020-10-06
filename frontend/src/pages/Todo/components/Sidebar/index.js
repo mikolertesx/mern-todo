@@ -9,16 +9,16 @@ import {
 } from "./components";
 import ProfileIcon from "../../../../static/images/user.png";
 
-export const SideBar = (props) => {
+export const SideBar = ({onClick, name}) => {
   return (
     <Content>
       <ProfileInfo>
         <ProfileDiv>
           <ProfileImage src={ProfileIcon} />
         </ProfileDiv>
-        <ProfileName>Name of user</ProfileName>
+        <ProfileName>{name}</ProfileName>
       </ProfileInfo>
-      <LeaveButton onClick={props.onClick} type="danger">Log out</LeaveButton>
+      <LeaveButton onClick={onClick} type="danger">Log out</LeaveButton>
     </Content>
   );
 };

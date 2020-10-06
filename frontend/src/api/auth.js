@@ -25,7 +25,16 @@ const login = async(username, password) => {
   return response.data;
 }
 
+const getName = async(token) => {
+  const url = `${baseUrl}/auth/name`;
+  const response = await axios.post(url, {
+    token: token
+  });
+  return response.data;
+}
+
 export {
   register,
-  login
+  login,
+  getName
 }

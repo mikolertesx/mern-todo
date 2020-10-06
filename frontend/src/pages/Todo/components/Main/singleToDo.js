@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
-import Trash from "../../../../static/images/trash.png"
+import Trash from "../../../../static/images/trash.png";
 
 const Content = styled.div`
   border-bottom: 1px solid black;
@@ -34,22 +34,62 @@ const CheckBox = styled.input`
 `;
 
 const Text = styled.p`
-  font-family: 'Arial';
+  font-family: "Arial";
   font-size: 1rem;
 `;
 
-const singleToDo = ({ text, checked }) => {
+const TextInput = styled.input`
+  font-family: "Arial";
+  font-size: 1rem;
+`;
+
+const SingleToDo = ({
+  text,
+  onTextChanged,
+  checked,
+  onCheckChanged,
+  onDelete,
+  onUpdate,
+}) => {
+  const [editMode, setEditMode] = useState(false);
+
+  const checkHandler = (event) => {
+    onCheckChanged(event);
+    onUpdate();
+  };
+
+  const onBlurHandler = () => {
+    setEditMode(false);
+    onUpdate();
+  };
+
+  const enterHandler = (event) => {
+    if (event.key === "Enter") {
+      onBlurHandler();
+    }
+  };
+
   return (
     <Content>
       <CheckAndTextDiv>
-        <CheckBox type="checkbox" checked={checked} />
-        <Text>{text}</Text>
+        <CheckBox type="checkbox" checked={checked} onChange={(e) => checkHandler(e)} />
+        {editMode ? (
+          <TextInput
+            ref={(inputRef) => inputRef && inputRef.focus()}
+            value={text}
+            onChange={onTextChanged}
+            onBlur={onBlurHandler}
+            onKeyDown={enterHandler}
+          />
+        ) : (
+          <Text onClick={() => setEditMode(true)}>{text}</Text>
+        )}
       </CheckAndTextDiv>
-      <DeleteDiv>
-        <DeleteImg src={Trash}/>
+      <DeleteDiv onClick={onDelete}>
+        <DeleteImg src={Trash} />
       </DeleteDiv>
     </Content>
   );
 };
 
-export default singleToDo;
+export default SingleToDo;

@@ -56,3 +56,5 @@ Another issue that was annoying is that since GitHub serves only a static file, 
 - I could reuse the Register and Login page with some slight variations instead of taking two different pages for that.
 
 - To avoid having to reduce the reusability of the components, you can use HOCs to provide the values that you are expecting to get.
+
+- If React Redux was implemented differently, I could just add code for deletion inside each of the elements or the elements that maps it on a list.

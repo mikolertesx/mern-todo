@@ -51,7 +51,25 @@ const authLogin = async (req, res) => {
   }
 };
 
+const authGetName = async(req, res) => {
+  const request = req.body;
+  const {token} = request;
+  const {id} = authToken.readToken(token);
+  const user = await User.findById(id);
+  
+  if (user) {
+    return res.send({
+      name: user.username
+    });
+  }
+
+  return res.send({
+    message: 'No user found.'
+  })
+}
+
 module.exports = {
   authRegister,
   authLogin,
+  authGetName
 };

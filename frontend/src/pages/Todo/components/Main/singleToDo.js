@@ -16,6 +16,7 @@ const CheckAndTextDiv = styled.div`
 `;
 
 const DeleteDiv = styled.div`
+  flex-shrink: 0;
   height: 32px;
   width: 32px;
   cursor: pointer;
@@ -27,6 +28,7 @@ const DeleteImg = styled.img`
 `;
 
 const CheckBox = styled.input`
+  flex-shrink: 0;
   width: 32px;
   height: 32px;
   cursor: pointer;

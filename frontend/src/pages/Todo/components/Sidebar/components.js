@@ -23,13 +23,15 @@ export const ProfileDiv = styled.div`
   width: 164px;
   height: 164px;
   border-radius: 50%;
-  background: gray;
+  background: white;
   margin: auto;
   margin-top: 24px;
   overflow: hidden;
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+  text-overflow: ellipsis;
 
   @media(max-width: 600px) {
+    padding: 8px;
     width: 80px;
     height: 80px;
   }
@@ -50,7 +52,7 @@ export const ProfileName = styled.h1`
   margin-top: 24px;
 
   @media(max-width: 600px) {
-    font-size: 1.2rem;
+    font-size: 1rem;
   }
 `;
 
